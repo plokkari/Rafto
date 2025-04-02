@@ -275,7 +275,7 @@
             <span></span>
             <span></span>
         </div>
-        <div class="logo" onclick="refreshPage()">
+        <div class="logo" onclick="scrollToTop()">
             <img src="mynd/logo.png" alt="Logo">
         </div>
     </nav>
@@ -301,7 +301,7 @@
     <!-- Company Information -->
     <section class="company-info">
         <h1>Rafto ehf</h1>
-        <p>This is where you will add your company description. Write about what makes Rafto special, your services, your mission, and why customers should choose you. This text will help visitors understand more about your company and its values.</p>
+        <p>This is where you will add your company description. Write about what makes Rafto special, your services, your mission, and why customers should choose you. This text will help visitors und[...]
     </section>
     
     <!-- Our Projects Section -->
@@ -343,7 +343,7 @@
     <!-- Bottom Bar -->
     <div class="bottom-bar">
         <div class="contacts">
-            <p>Contacts: Phone: <a href="tel:842-2646" style="color: #ffffff; text-decoration: none;">842-2646</a> | Email: <a href="mailto:rafto@rafto.is" style="color: #ffffff; text-decoration: none;">rafto@rafto.is</a></p>
+            <p>Contacts: Phone: <a href="tel:842-2646" style="color: #ffffff; text-decoration: none;">842-2646</a> | Email: <a href="mailto:rafto@rafto.is" style="color: #ffffff; text-decoration: none[...]
         </div>
     </div>
     
@@ -354,9 +354,9 @@
             document.querySelector('.sidebar-backdrop').classList.toggle('active');
         }
         
-        // Page Refresh Function
-        function refreshPage() {
-            window.location.reload();
+        // Scroll to Top Function
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         // Improved Image Slider Function
