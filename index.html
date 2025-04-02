@@ -32,14 +32,16 @@
         
         .logo {
             height: 50px;
-            /* Replace with your actual logo */
-            background-color: rgba(255,255,255,0.9);
             width: 140px;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 4px;
             cursor: pointer; /* Added cursor pointer to indicate it's clickable */
+        }
+
+        .logo img {
+            height: 100%;
         }
         
         .menu-btn {
@@ -141,6 +143,12 @@
         .slide.active {
             opacity: 1;
             z-index: 1;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         /* Company Information Section */
@@ -250,7 +258,9 @@
             <span></span>
             <span></span>
         </div>
-        <div class="logo" onclick="refreshPage()">RAFTO LOGO</div>
+        <div class="logo" onclick="refreshPage()">
+            <img src="mynd/logo.png" alt="Logo">
+        </div>
     </nav>
     
     <!-- Sidebar Menu -->
@@ -266,15 +276,15 @@
     
     <!-- Image Slider with Improved Transitions -->
     <div class="slider-container">
-        <div class="slide" id="slide1">Slide 1 (Replace with image)</div>
-        <div class="slide" id="slide2">Slide 2 (Replace with image)</div>
-        <div class="slide" id="slide3">Slide 3 (Replace with image)</div>
+        <div class="slide" id="slide1"><img src="mynd/hof.jpeg" alt="Slide 1"></div>
+        <div class="slide" id="slide2"><img src="mynd/list.jpeg" alt="Slide 2"></div>
+        <div class="slide" id="slide3"><img src="mynd/led.jpeg" alt="Slide 3"></div>
     </div>
     
     <!-- Company Information -->
     <section class="company-info">
         <h1>Rafto ehf</h1>
-        <p>This is where you will add your company description. Write about what makes Rafto special, your services, your mission, and why customers should choose you. This text will help visitors understand what your company is all about.</p>
+        <p>This is where you will add your company description. Write about what makes Rafto special, your services, your mission, and why customers should choose you. This text will help visitors understand your company better and build trust.</p>
     </section>
     
     <!-- Our Projects Section -->
