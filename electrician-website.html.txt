@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafto ehf - Professional Electrical Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Top Navigation Bar - Professional Blue */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #1a4b8c;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            height:120px;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+        
+        .menu-btn {
+            position: absolute;
+            left: 20px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+        }
+        
+        .menu-btn span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 3px;
+        }
+        
+        /* Sidebar Menu */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            transition: left 0.3s ease-in-out;
+            z-index: 1001;
+            padding-top: 80px;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .sidebar-backdrop.active {
+            display: block;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar li {
+            padding: 15px 25px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .sidebar li a {
+            color: #1a4b8c;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+        }
+        
+        .sidebar li a:hover {
+            color: #2e6cc3;
+        }
+        
+        /* Updated Image Slider */
+        .slider-container {
+            margin-top: 70px;
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #555;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            z-index: 1;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 60vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #ffb400;
+            color: #1a4b8c;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #ffc730;
+            transform: translateY(-2px);
+        }
+        
+        /* Company Information Section */
+        .company-info {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .company-info h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+            color: #1a4b8c;
+        }
+        
+        .company-info p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #444;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 20px;
+            background-color: #f5f7fa;
+            text-align: center;
+        }
+        
+        .services h2 {
+            font-size: 42px;
+            margin-bottom: 40px;
+            color: #1a4b8c;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            font-size: 48px;
+            color: #1a4b8c;
+            margin-bottom: 20px;
+        }
+        
+        .service-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #1a4b8c;
+        }
+        
+        .service-item p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        /* Our Projects Section */
+        .projects {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .projects h2 {
+            font-size: 42px;
+            margin-bottom: 40px;
+            color: #1a4b8c;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .project {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .project-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a4b8c;
+        }
+        
+        .project-info p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        .project-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background-color: #1a4b8c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .project-btn:hover {
+            background-color: #2e6cc3;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 20px;
+            background-color: #f5f7fa;
+            text-align: center;
+        }
+        
+        .testimonials h2 {
+            font-size: 42px;
+            margin-bottom: 40px;
+            color: #1a4b8c;
+        }
+        
+        .testimonial-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        
+        .testimonial-text {
+            font-size: 18px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #1a4b8c;
+        }
+        
+        /* Call to Action Section */
+        .cta-section {
+            padding: 80px 20px;
+            background-color: #1a4b8c;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 42px;
+            margin-bottom: 40px;
+            color: #1a4b8c;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: space-between;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .info-item {
+            margin-bottom: 20px;
+        }
+        
+        .info-item h3 {
+            font-size: 20px;
+            color: #1a4b8c;
+            margin-bottom: 10px;
+        }
+        
+        .info-item p {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #444;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        .submit-btn {
+            padding: 12px 30px;
+            background-color: #1a4b8c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2e6cc3;
+        }
+        
+        /* Certifications Section */
+        .certifications {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f5f7fa;
+        }
+        
+        .certifications h2 {
+            font-size: 42px;
+            margin-bottom: 40px;
+            color: #1a4b8c;
+        }
+        
+        .cert-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .cert-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .cert-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .cert-icon {
+            font-size: 48px;
+            color: #1a4b8c;
+            margin-bottom: 15px;
+        }
+        
+        .cert-item h3 {
+            font-size: 18px;
+            color: #444;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a4b8c;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Emergency Banner */
+        .emergency-banner {
+            background-color: #ff4141;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            position: relative;
+            z-index: 99;
+            margin-top: 70px;
+        }
+        
+        .emergency-banner a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Bottom Bar Styles */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #1a4b8c;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .bottom-bar .contacts {
+            font-size: 16px;
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .company-info h2,
+            .services h2,
+            .projects h2,
+            .testimonials h2,
+            .contact h2,
+            .certifications h2,
+            .cta-section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="menu-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo" onclick="scrollToTop()">
+            <img src="mynd/logo.png" alt="Rafto ehf Logo">
+        </div>
+    </nav>
+    
+    <!-- Sidebar Menu -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="#about">Um Rafto</a></li>
+            <li><a href="#services">Þjónusta</a></li>
+            <li><a href="#projects">Verkefni</a></li>
+            <li><a href="#testimonials">Umsagnir</a></li>
+            <li><a href="#certifications">Vottanir</a></li>
+            <li><a href="#contact">Hafðu samband</a></li>
+            <li><a href="#" class="emergency">Neyðarþjónusta</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-backdrop" onclick="toggleSidebar()"></div>
+    
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        Neyðarþjónusta 24/7 - Hringdu í <a href="tel:842-2646">842-2646</a> fyrir bráðaaðstoð
+    </div>
+    
+    <!-- Hero Section with Slider -->
+    <section class="hero">
+        <div class="slider-container">
+            <div class="slide active" id="slide1"><img src="mynd/1hof.jpeg" alt="Rafto ehf Electrical Services"></div>
+            <div class="slide" id="slide2"><img src="mynd/1safn.jpeg" alt="Professional Electricians"></div>
+            <div class="slide" id="slide3"><img src="mynd/1led.jpeg" alt="Electrical Solutions"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Rafto ehf - Fagmennska í fyrirrúmi</h1>
+            <p>Rafmagnsþjónusta fyrir heimili og fyrirtæki - faglegar lausnir og áreiðanleg þjónusta</p>
+            <a href="#contact" class="cta-button">Fáðu tilboð</a>
+        </div>
+    </section>
+    
+    <!-- Company Information -->
+    <section id="about" class="company-info">
+        <h2>Um Rafto ehf</h2>
+        <p>Rafto ehf er leiðandi rafverktakafyrirtæki með áratuga reynslu í faginu. Við sérhæfum okkur í heildarlausnum á sviði rafmagns fyrir bæði heimili og fyrirtæki um allt land. Okkar markmið er að veita framúrskarandi þjónustu og öruggar rafmagnslausnir sem standast ströngustu gæðakröfur.</p>
+        <p>Með reyndum meisturum og faglærðum rafvirkjum getum við tekið að okkur verkefni af öllum stærðum og gerðum - allt frá litlum viðgerðum upp í stór iðnaðarverkefni. Við leggjum áherslu á áreiðanleika, fagmennsku og góð samskipti við viðskiptavini okkar.</p>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Þjónusta okkar</h2>
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-item">
+                <div class="service-icon">⚡</div>
+                <h3>Rafmagnsinnlagnir</h3>
+                <p>Nýlagnir og endurnýjun rafkerfis fyrir heimili, fyrirtæki og nýbyggingar. Öruggar og faglega uppsett raflagnir sem standast ströngustu kröfur.</p>
+            </div>
+            
+            <!-- Service 2 -->
+            <div class="service-item">
+                <div class="service-icon">💡</div>
+                <h3>Lýsingahönnun</h3>
+                <p>Sérhönnuð lýsing fyrir heimili og fyrirtæki. Ráðgjöf og uppsetning á hagkvæmum og fallegum lýsingalausnum sem henta þínu rými.</p>
+            </div>
+            
+            <!-- Service 3 -->
+            <div class="service-item">
+                <div class="service-icon">🏠</div>
+                <h3>Snjallheimilausnir</h3>
+                <p>Uppsetning og ráðgjöf á snjallheimakerfum. Samþætting á ljósum, hita, öryggi og fleiru til að gera heimili þitt þægilegra og hagkvæmara.</p>
+            </div>
+            
+            <!-- Service 4 -->
+            <div class="service-item">
+                <div class="service-icon">🔌</div>
+                <h3>Tengingar og viðgerðir</h3>
+                <p>Fagleg þjónusta við allar tengingar og viðgerðir á rafbúnaði, töfluskiptum, tengingum og bilanagreiningu á rafkerfum.</p>
+            </div>
+            
+            <!-- Service 5 -->
+            <div class="service-item">
+                <div class="service-icon">🏭</div>
+                <h3>Iðnaðarraflagnir</h3>
+                <p>Sérhæfðar raflagnir fyrir verksmiðjur, vinnustofur og iðnaðarrými. Stýrikerfi, sjálfvirkni og öryggiskerfi fyrir iðnað og framleiðslu.</p>
+            </div>
+            
+            <!-- Service 6 -->
+            <div class="service-item">
+                <div class="service-icon">🔋</div>
+                <h3>Hleðslustöðvar</h3>
+                <p>Uppsetning og tenging á hleðslustöðvum fyrir rafbíla við heimili og fyrirtæki. Ráðgjöf um hentuga lausn miðað við þínar þarfir.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Our Projects Section -->
+    <section id="projects" class="projects">
+        <h2>Verkefnin okkar</h2>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project">
+                <div class="project-image">
+                    <img src="/api/placeholder/400/320" alt="Íbúðarhúsnæði verkefni">
+                </div>
+                <div class="project-info">
+                    <h3>Íbúðarhúsnæði í Garðabæ</h3>
+                    <p>Heildarlausn á raflögnum í nýbyggðu einbýlishúsi. Snjallheimilausnir, LED lýsing og hleðslustöð fyrir rafbíl.</p>
+                    <a href="#" class="project-btn">Sjá nánar</a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project">
+                <div class="project-image">
+                    <img src="/api/placeholder/400/320" alt="Verslunarmiðstöð verkefni">
+                </div>
+                <div class="project-info">
+                    <h3>Verslunarmiðstöð Kringlunni</h3>
+                    <p>Umfangsmiklar endurbætur á raflögnum og lýsingu í verslunarrými. Orkusparandi lausnir og nýtt stýrikerfi.</p>
+                    <a href="#" class="project-btn">Sjá nánar</a>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project">
+                <div class="project-image">
+                    <img src="/api/placeholder/400/320" alt="Iðnaðarlausn verkefni">
+                </div>
+                <div class="project-info">
+                    <h3>Iðnaðarlausn fyrir Marel</h3>
+                    <p>Sérhæfðar iðnaðarraflagnir og stýrikerfi fyrir framleiðslusal. Tækjauppsetning og forritun.</p>
+                    <a href="#" class="project-btn">Sjá nánar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2>Umsagnir viðskiptavina</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <p class="testimonial-text">"Rafto sá um allar raflagnir í nýju húsinu okkar og voru einstaklega fagmannleg í alla staði. Góð samskipti, skýrar og faglegar ráðleggingar og frábær vinna. Mæli hiklaust með þeim."</p>
+                <p class="testimonial-author">- Jón Jónsson, húseigandi í Mosfellsbæ</p>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">"Höfum nýtt þjónustu Rafto við fyrirtækið okkar í mörg ár og ávallt verið ánægð. Þeir bregðast hratt við, koma með góðar lausnir og vinna vönduð verk. Það er ómetanlegt að hafa áreiðanlega rafvirkja á hraðlista."</p>
+                <p class="testimonial-author">- Guðrún Guðmundsdóttir, framkvæmdastjóri</p>
+            </div>
+            
+            <div class="testimonial">
+                <p class="testimonial-text">"Þurfti bráðaaðstoð vegna rafmagnsbilunar og Rafto brást við innan klukkustundar. Starfsmaðurinn greindi bilunina fljótt og skildi við snyrtilega. Ég mæli með þeim fyrir alla rafmagnsþjónustu."</p>
+                <p class="testimonial-author">- Sigríður Ólafsdóttir, viðskiptavinur</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <h2>Vottanir og réttindi</h2>
+        <div class="cert-container">
+            <div class="cert-item">
+                <div class="cert-icon">🏆</div>
+                <h3>Rafmagnsverktakaleyfi</h3>
+            </div>
+            
+            <div class="cert-item">
+                <div class="cert-icon">🏆</div>
+                <h3>Löggiltir rafvirkjameistarar</h3>
+            </div>
+            
+            <div class="cert-item">
+                <div class="cert-icon">🏆</div>
+                <h3>Gæðavottun ISO 9001</h3>
+            </div>
+            
+            <div class="cert-item">
+                <div class="cert-icon">🏆</div>
+                <h3>Öryggisvottun
