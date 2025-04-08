@@ -118,17 +118,17 @@
             color: #2e6cc3;
         }
         .slider-container {
-            margin-top: 70px; /* Matches the height of the navbar */
-    margin-bottom: 50px; 
-            position: relative;
-            width: 100%;
-            height: 70vh; /* Adjust height for a balanced look */
-            overflow: hidden;
-            background-color: #f5f7fa; /* Optional: Add a subtle background color */
-            display: flex;
-            align-items: center; /* Center the slides vertically */
-            justify-content: center; /* Center the slides horizontally */
-        }
+    margin-top: 70px; /* Matches the height of the navbar */
+    margin-bottom: 20px; /* Reduced space below the slider */
+    position: relative;
+    width: 100%;
+    height: 70vh; /* Adjust height for a balanced look */
+    overflow: hidden;
+    background-color: #f5f7fa; /* Optional: Add a subtle background color */
+    display: flex;
+    align-items: center; /* Center the slides vertically */
+    justify-content: center; /* Center the slides horizontally */
+}
 
 .slide {
     position: absolute;
@@ -266,11 +266,12 @@
 
         /* Company Information Section */
         .company-info {
-            padding: 80px 20px;
-            text-align: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    padding-top: 20px; /* Reduced padding to bring it closer to the slider */
+    padding-bottom: 40px; /* Optional: Add some spacing below the section */
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
         .company-info h2 {
             font-size: 42px;
@@ -693,24 +694,25 @@
 
         /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
+    .slider-container {
+        margin-top: 50px; /* Reduce space above the slider */
+        margin-bottom: 10px; /* Reduce space below the slider */
+        height: 50vh; /* Reduce slider height for smaller screens */
+    }
 
-            .hero p {
-                font-size: 18px;
-            }
+    .company-info {
+        padding-top: 10px; /* Reduce padding above the section */
+        padding-bottom: 20px; /* Reduce padding below the section */
+    }
 
-            .company-info h2,
-            .services h2,
-            .projects h2,
-            .testimonials h2,
-            .contact h2,
-            .certifications h2,
-            .cta-section h2 {
-                font-size: 32px;
-            }
-        }
+    .company-info h2 {
+        font-size: 28px; /* Adjust heading size for smaller screens */
+    }
+
+    .company-info p {
+        font-size: 16px; /* Adjust paragraph size for readability */
+    }
+}
 
         /* Contact Segment Styles */
         .contact-segment {
@@ -879,7 +881,7 @@
                 <h3>Hafðu Samband</h3>
                 <ul>
                     <li><a href="tel:+3548422646">Sími: 842-2646</a></li>
-                    <li><a href="mailto:Raftó@Raftó.is">Email: Rafto@Rafto.is</a></li>
+                    <li><a href="mailto:Rafto@Rafto.is">Email: Rafto@Rafto.is</a></li>
                     <li>Kt: 440297-2429</li>
                 </ul>
             </div>
