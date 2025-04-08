@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rafto ehf - Professional Electrical Services</title>
+    <title>Raftó ehf - Professional Electrical Services</title>
     <style>
         * {
             margin: 0;
@@ -117,40 +117,95 @@
         .sidebar li a:hover {
             color: #2e6cc3;
         }
-
-        /* Updated Image Slider */
         .slider-container {
-            margin-top: 70px;
+            margin-top: 70px; /* Matches the height of the navbar */
+    margin-bottom: 50px; 
             position: relative;
             width: 100%;
-            height: 60vh;
+            height: 70vh; /* Adjust height for a balanced look */
             overflow: hidden;
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #f5f7fa;
+            background-color: #f5f7fa; /* Optional: Add a subtle background color */
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-            color: #555;
-            opacity: 0;
-            transition: opacity 0.8s ease-in-out;
+            align-items: center; /* Center the slides vertically */
+            justify-content: center; /* Center the slides horizontally */
         }
 
-        .slide.active {
-            opacity: 1;
-            z-index: 1;
-        }
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Smooth fade effect */
+}
 
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide img {
+    width: 80%; /* Reduce image width for better spacing */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better focus */
+    border: 5px solid #1a4b8c; /* Add a frame with a blue border */
+}
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Navigation Arrows */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 24px;
+    z-index: 2;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.slide img {
+    width: 90%; /* Add some spacing around the images */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    border-radius: 10px; /* Optional: Add rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better focus */
+}
+        
 
         /* Hero Section */
         .hero {
@@ -327,7 +382,6 @@
             color: #777;
             overflow: hidden;
         }
-
         .project-image img {
             width: 100%;
             height: 100%;
@@ -676,6 +730,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Top Navigation Bar -->
     <nav class="navbar">
@@ -685,185 +740,192 @@
             <span></span>
         </div>
         <div class="logo" onclick="scrollToTop()">
-            <img src="mynd/logo.png" alt="Rafto ehf Logo">
+            <img src="mynd/logo.png" alt="Raftó ehf Logo">
         </div>
     </nav>
 
     <!-- Sidebar Menu -->
     <div class="sidebar">
         <ul>
-            <li><a href="#about">Um Rafto</a></li>
+            <li><a href="#about">Um Raftó</a></li>
             <li><a href="#services">Þjónusta</a></li>
-                    <li><a href="#projects">Verkefni</a></li>
-        <li><a href="#testimonials">Umsagnir</a></li>
-        <li><a href="#certifications">Vottanir</a></li>
-        <li><a href="#contact">Hafðu samband</a></li>
-        <li><a href="#" class="emergency">Neyðarþjónusta</a></li>
-    </ul>
-</div>
-<div class="sidebar-backdrop" onclick="toggleSidebar()"></div>
-
-<!-- Hero Section with Slider -->
-<section class="hero">
-    <div class="slider-container">
-        <div class="slide active" id="slide1"><img src="mynd/1hof.jpeg" alt="Rafto ehf Electrical Services"></div>
-        <div class="slide" id="slide2"><img src="mynd/1safn.jpeg" alt="Professional Electricians"></div>
-        <div class="slide" id="slide3"><img src="mynd/1led.jpeg" alt="Electrical Solutions"></div>
+            <li><a href="#projects">Verkefni</a></li>
+            <li><a href="#testimonials">Umsagnir</a></li>
+            <li><a href="#certifications">Vottanir</a></li>
+            <li><a href="#contact">Hafðu samband</a></li>
+            <li><a href="#" class="emergency">Neyðarþjónusta</a></li>
+        </ul>
     </div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1>Rafto ehf - Fagmennska í fyrirrúmi</h1>
-        <p>Rafmagnsþjónusta fyrir heimili og fyrirtæki - faglegar lausnir og áreiðanleg þjónusta</p>
-        <a href="#contact" class="cta-button">Fáðu tilboð</a>
-    </div>
-</section>
+    <div class="sidebar-backdrop" onclick="toggleSidebar()"></div>
 
-<!-- Company Information -->
-<section id="about" class="company-info">
-    <h2>Um Rafto ehf</h2>
-    <p>Rafto ehf er leiðandi rafverktakafyrirtæki með áratuga reynslu í faginu. Við sérhæfum okkur í heildarlausnum á sviði rafmagns fyrir bæði heimili og fyrirtæki um allt land. Með reyndum meisturum og faglærðum rafvirkjum getum við tekið að okkur verkefni af öllum stærðum og gerðum - allt frá litlum viðgerðum upp í stór iðnaðarverkefni.</p>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="services">
-    <h2>Þjónusta okkar</h2>
-    <div class="services-grid">
-        <div class="service-item">
-            <div class="service-icon">⚡</div>
-            <h3>Rafmagnsinnlagnir</h3>
-            <p>Nýlagnir og endurnýjun rafkerfis fyrir heimili, fyrirtæki og nýbyggingar. Öruggar og faglega uppsett raflagnir sem standast ströngustu kröfur.</p>
-        </div>
-        <div class="service-item">
-            <div class="service-icon">💡</div>
-            <h3>Lýsingahönnun</h3>
-            <p>Sérhönnuð lýsing fyrir heimili og fyrirtæki. Ráðgjöf og uppsetning á hagkvæmum og fallegum lýsingalausnum sem henta þínu rými.</p>
-        </div>
-        <div class="service-item">
-            <div class="service-icon">🏠</div>
-            <h3>Snjallheimilausnir</h3>
-            <p>Uppsetning og ráðgjöf á snjallheimakerfum. Samþætting á ljósum, hita, öryggi og fleiru til að gera heimili þitt þægilegra og hagkvæmara.</p>
-        </div>
-        <div class="service-item">
-            <div class="service-icon">🔌</div>
-            <h3>Tengingar og viðgerðir</h3>
-            <p>Fagleg þjónusta við allar tengingar og viðgerðir á rafbúnaði, töfluskiptum, tengingum og bilanagreiningu á rafkerfum.</p>
-        </div>
-        <div class="service-item">
-            <div class="service-icon">🏭</div>
-            <h3>Iðnaðarraflagnir</h3>
-            <p>Sérhæfðar raflagnir fyrir verksmiðjur, vinnustofur og iðnaðarrými. Stýrikerfi, sjálfvirkni og öryggiskerfi fyrir iðnað og framleiðslu.</p>
-        </div>
-        <div class="service-item">
-            <div class="service-icon">🔋</div>
-            <h3>Hleðslustöðvar</h3>
-            <p>Uppsetning og tenging á hleðslustöðvum fyrir rafbíla við heimili og fyrirtæki. Ráðgjöf um hentuga lausn miðað við þínar þarfir.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Our Projects Section -->
-<section id="projects" class="projects">
-    <h2>Verkefnin okkar</h2>
-    <div class="project-grid">
-        <div class="project">
-            <div class="project-image">
-                <img src="/api/placeholder/400/320" alt="Íbúðarhúsnæði verkefni">
+    <!-- Hero Section with Slider -->
+     <div>
+        <div class="slider-container">
+            <div class="slide active" id="slide1">
+                <img src="mynd/1hof.jpeg" alt="Raftó ehf Electrical Services">
             </div>
-            <div class="project-info">
-                <h3>Hring ljós í Hofi</h3>
-                <p>Við settum upp skrautlýsingu fyrir sal í Hofi.</p>
-                <a href="#" class="project-btn">Sjá nánar</a>
+            <div class="slide" id="slide2">
+                <img src="mynd/1safn.jpeg" alt="Professional Electricians">
+            </div>
+            <div class="slide" id="slide3">
+                <img src="mynd/1led.jpeg" alt="Electrical Solutions">
+            </div>
+            <!-- Navigation Arrows -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+    <!-- Company Information -->
+    <section id="about" class="company-info">
+        <h2>Um Raftó ehf</h2>
+        <p>Raftó ehf er leiðandi rafverktakafyrirtæki með áratuga reynslu í faginu. Við sérhæfum okkur í heildarlausnum á sviði rafmagns fyrir bæði heimili og fyrirtæki um allt land. Með reyndum meisturum og faglærðum rafvirkjum getum við tekið að okkur verkefni af öllum stærðum og gerðum - allt frá litlum viðgerðum upp í stór iðnaðarverkefni.</p>
+    </section>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2>Þjónusta okkar</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <div class="service-icon">⚡</div>
+                <h3>Rafmagnsinnlagnir</h3>
+                <p>Nýlagnir og endurnýjun rafkerfis fyrir heimili, fyrirtæki og nýbyggingar. Öruggar og faglega uppsett raflagnir sem standast ströngustu kröfur.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">💡</div>
+                <h3>Lýsingahönnun</h3>
+                <p>Sérhönnuð lýsing fyrir heimili og fyrirtæki. Ráðgjöf og uppsetning á hagkvæmum og fallegum lýsingalausnum sem henta þínu rými.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🏠</div>
+                <h3>Snjallheimilausnir</h3>
+                <p>Uppsetning og ráðgjöf á snjallheimakerfum. Samþætting á ljósum, hita, öryggi og fleiru til að gera heimili þitt þægilegra og hagkvæmara.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🔌</div>
+                <h3>Tengingar og viðgerðir</h3>
+                <p>Fagleg þjónusta við allar tengingar og viðgerðir á rafbúnaði, töfluskiptum, tengingum og bilanagreiningu á rafkerfum.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🏭</div>
+                <h3>Iðnaðarraflagnir</h3>
+                <p>Sérhæfðar raflagnir fyrir verksmiðjur, vinnustofur og iðnaðarrými. Stýrikerfi, sjálfvirkni og öryggiskerfi fyrir iðnað og framleiðslu.</p>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🔋</div>
+                <h3>Hleðslustöðvar</h3>
+                <p>Uppsetning og tenging á hleðslustöðvum fyrir rafbíla við heimili og fyrirtæki. Ráðgjöf um hentuga lausn miðað við þínar þarfir.</p>
             </div>
         </div>
-        <div class="project">
-            <div class="project-image">
-                <img src="/api/placeholder/400/320" alt="Verslunarmiðstöð verkefni">
+    </section>
+
+    <!-- Our Projects Section -->
+    <section id="projects" class="projects">
+        <h2>Verkefnin okkar</h2>
+            <div class="project">
+                <div class="project-image">
+                    <img src="/api/placeholder/400/320" alt="Íbúðarhúsnæði verkefni">
+                </div>
+                <div class="project-info">
+                    <h3>Hring ljós í Hofi</h3>
+                    <p>Við settum upp skrautlýsingu fyrir sal í Hofi.</p>
+                    <a href="#" class="project-btn">Sjá nánar</a>
+                </div>
             </div>
-            <div class="project-info">
-                <h3>Ledborði fyrir tröppur í sigurhæðum</h3>
-                <p>Litríkur ledborði sem við settu, upp til að lýsa upp tröppurnar upp að Sighæðum.</p>
-                <a href="#" class="project-btn">Sjá nánar</a>
+            <div class="project">
+                <div class="project-image">
+                    <img src="/api/placeholder/400/320" alt="Verslunarmiðstöð verkefni">
+                </div>
+                <div class="project-info">
+                    <h3>Ledborði fyrir tröppur í sigurhæðum</h3>
+                    <p>Litríkur ledborði sem við settu, upp til að lýsa upp tröppurnar upp að Sighæðum.</p>
+                    <a href="#" class="project-btn">Sjá nánar</a>
+                </div>
+            </div>
+            <div class="project">
+                <div class="project-image">
+                    <img src="/api/placeholder/400/320" alt="Iðnaðarlausn verkefni">
+                </div>
+                <div class="project-info">
+                    <h3>Útilýsing fyrir Víðilund</h3>
+                    <p>Ledborði sem fer eftir húsinu sem lýsir upp gönguleið.</p>
+                    <a href="#" class="project-btn">Sjá nánar</a>
+                </div>
+            </div>
+    
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Raftó ehf</h3>
+                <ul>
+                    <li><a href="#about">Um okkur</a></li>
+                    <li><a href="#services">Þjónusta</a></li>
+                    <li><a href="#contact">Hafðu samband</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Þjónusta</h3>
+                <ul>
+                    <li><a href="#services">Rafmagnsinnlagnir</a></li>
+                    <li><a href="#services">Lýsingahönnun</a></li>
+                    <li><a href="#services">Snjallheimilausnir</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Hafðu Samband</h3>
+                <ul>
+                    <li><a href="tel:+3548422646">Sími: 842-2646</a></li>
+                    <li><a href="mailto:Raftó@Raftó.is">Email: Raftó@Raftó.is</a></li>
+                    <li>Kt: 440297-2429</li>
+                </ul>
             </div>
         </div>
-        <div class="project">
-            <div class="project-image">
-                <img src="/api/placeholder/400/320" alt="Iðnaðarlausn verkefni">
-            </div>
-            <div class="project-info">
-                <h3>Útilýsing fyrir Víðilund</h3>
-                <p>Ledborði sem fer eftir húsinu sem lýsir upp gönguleið.</p>
-                <a href="#" class="project-btn">Sjá nánar</a>
-            </div>
+        <div class="copyright">
+            <p>&copy; 2025 Raftó ehf. Allur réttur áskilinn.</p>
         </div>
-    </div>
-</section>
+    </footer>
 
-<!-- Contact Segment -->
-<section class="contact-segment">
-    <h2>Contact Information</h2>
-    <p>Raftó EHF</p>
-    <p>600 Akureyri</p>
-    <p>440297-2429</p>
-    <p><a href="tel:+3548422646">Sími: 842-2646</a></p>
-    <p><a href="mailto:rafto@rafto.is">Email: rafto@rafto.is</a></p>
-</section>
+    <script>
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
+            document.querySelector('.sidebar-backdrop').classList.toggle('active');
+        }
 
-<!-- Footer -->
-<footer>
-    <div class="footer-container">
-        <div class="footer-col">
-            <h3>Rafto ehf</h3>
-            <ul>
-                <li><a href="#about">Um okkur</a></li>
-                <li><a href="#services">Þjónusta</a></li>
-                <li><a href="#contact">Hafðu samband</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h3>Þjónusta</h3>
-            <ul>
-                <li><a href="#services">Rafmagnsinnlagnir</a></li>
-                <li><a href="#services">Lýsingahönnun</a></li>
-                <li><a href="#services">Snjallheimilausnir</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h3>Hafðu Samband</h3>
-            <ul>
-                <li><a href="tel:+3548422646">Sími: 842-2646</a></li>
-                <li><a href="mailto:rafto@rafto.is">Email: rafto@rafto.is</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="copyright">
-        <p>&copy; 2025 Rafto ehf. Allur réttur áskilinn.</p>
-    </div>
-</footer>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
-<script>
-    function toggleSidebar() {
-        document.querySelector('.sidebar').classList.toggle('active');
-        document.querySelector('.sidebar-backdrop').classList.toggle('active');
-    }
-
-    function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    let slideIndex = 0;
-    const slides = document.querySelectorAll('.slide');
-    const showSlides = () => {
-        slides.forEach((slide, index) => {
-            slide.style.opacity = '0';
-            slide.classList.remove('active');
-        });
-        slideIndex++;
-        if (slideIndex > slides.length) slideIndex = 1;
-        slides[slideIndex - 1].style.opacity = '1';
-        slides[slideIndex - 1].classList.add('active');
-        setTimeout(showSlides, 4000); // Change slide every 4 seconds
-    };
-    showSlides();
-</script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const showSlides = () => {
+            slides.forEach((slide, index) => {
+                slide.style.opacity = '0';
+                slide.classList.remove('active');
+            });
+            slideIndex++;
+            if (slideIndex > slides.length) slideIndex = 1;
+            slides[slideIndex - 1].style.opacity = '1';
+            slides[slideIndex - 1].classList.add('active');
+            setTimeout(showSlides, 4000); // Change slide every 4 seconds
+        };
+        function changeSlide(n) {
+    slideIndex += n;
+    if (slideIndex > slides.length) slideIndex = 1;
+    if (slideIndex < 1) slideIndex = slides.length;
+    slides.forEach((slide) => {
+        slide.style.opacity = '0';
+        slide.classList.remove('active');
+    });
+    slides[slideIndex - 1].style.opacity = '1';
+    slides[slideIndex - 1].classList.add('active');
+}
+        showSlides();
+    
+    </script>
 </body>
+
 </html>
