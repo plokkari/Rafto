@@ -259,6 +259,7 @@
             transition: all 0.3s ease;
         }
 
+
         .cta-button:hover {
             background-color: #ffc730;
             transform: translateY(-2px);
@@ -752,10 +753,7 @@
             <li><a href="#about">Um Raftó</a></li>
             <li><a href="#services">Þjónusta</a></li>
             <li><a href="#projects">Verkefni</a></li>
-            <li><a href="#testimonials">Umsagnir</a></li>
-            <li><a href="#certifications">Vottanir</a></li>
-            <li><a href="#contact">Hafðu samband</a></li>
-            <li><a href="#" class="emergency">Neyðarþjónusta</a></li>
+            <li><a href="contact.html">Hafðu samband</a></li>
         </ul>
     </div>
     <div class="sidebar-backdrop" onclick="toggleSidebar()"></div>
@@ -767,10 +765,10 @@
                 <img src="mynd/1hof.jpeg" alt="Raftó ehf Electrical Services">
             </div>
             <div class="slide" id="slide2">
-                <img src="mynd/1safn.jpeg" alt="Professional Electricians">
+                <img src="mynd/2safn.jpeg" alt="Professional Electricians">
             </div>
             <div class="slide" id="slide3">
-                <img src="mynd/1led.jpeg" alt="Electrical Solutions">
+                <img src="mynd/2led.jpeg" alt="Electrical Solutions">
             </div>
             <!-- Navigation Arrows -->
             <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
@@ -826,7 +824,7 @@
         <h2>Verkefnin okkar</h2>
             <div class="project">
                 <div class="project-image">
-                    <img src="/api/placeholder/400/320" alt="Íbúðarhúsnæði verkefni">
+                    <img src="mynd/1hof.jpeg" alt="Íbúðarhúsnæði verkefni">
                 </div>
                 <div class="project-info">
                     <h3>Hring ljós í Hofi</h3>
@@ -836,17 +834,17 @@
             </div>
             <div class="project">
                 <div class="project-image">
-                    <img src="/api/placeholder/400/320" alt="Verslunarmiðstöð verkefni">
+                    <img src="mynd/2safn.jpeg" alt="Verslunarmiðstöð verkefni">
                 </div>
                 <div class="project-info">
-                    <h3>Ledborði fyrir tröppur í sigurhæðum</h3>
+                    <h3>Ledborði fyrir tröppur í Sigurhæðum</h3>
                     <p>Litríkur ledborði sem við settu, upp til að lýsa upp tröppurnar upp að Sighæðum.</p>
                     <a href="#" class="project-btn">Sjá nánar</a>
                 </div>
             </div>
             <div class="project">
                 <div class="project-image">
-                    <img src="/api/placeholder/400/320" alt="Iðnaðarlausn verkefni">
+                    <img src="mynd/2led.jpeg" alt="Iðnaðarlausn verkefni">
                 </div>
                 <div class="project-info">
                     <h3>Útilýsing fyrir Víðilund</h3>
@@ -866,7 +864,7 @@
                 <ul>
                     <li><a href="#about">Um okkur</a></li>
                     <li><a href="#services">Þjónusta</a></li>
-                    <li><a href="#contact">Hafðu samband</a></li>
+                    <li><a href="contact.html">Hafðu samband</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -892,41 +890,68 @@
     </footer>
 
     <script>
-        function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('active');
-            document.querySelector('.sidebar-backdrop').classList.toggle('active');
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        let slideIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const showSlides = () => {
-            slides.forEach((slide, index) => {
-                slide.style.opacity = '0';
-                slide.classList.remove('active');
-            });
-            slideIndex++;
-            if (slideIndex > slides.length) slideIndex = 1;
-            slides[slideIndex - 1].style.opacity = '1';
-            slides[slideIndex - 1].classList.add('active');
-            setTimeout(showSlides, 4000); // Change slide every 4 seconds
-        };
-        function changeSlide(n) {
-    slideIndex += n;
-    if (slideIndex > slides.length) slideIndex = 1;
-    if (slideIndex < 1) slideIndex = slides.length;
-    slides.forEach((slide) => {
-        slide.style.opacity = '0';
-        slide.classList.remove('active');
-    });
-    slides[slideIndex - 1].style.opacity = '1';
-    slides[slideIndex - 1].classList.add('active');
-}
-        showSlides();
+        let slideIndex = 0; // Start with the first slide
+        const slides = document.querySelectorAll('.slide'); // Select all slides
+        let slideInterval; // Variable to store the interval
     
+        // Function to show the current slide
+        const showSlide = (index) => {
+            slides.forEach((slide, i) => {
+                slide.style.opacity = '0'; // Hide all slides
+                slide.classList.remove('active'); // Remove the active class
+            });
+            slides[index].style.opacity = '1'; // Show the current slide
+            slides[index].classList.add('active'); // Add the active class
+        };
+    
+        // Function to go to the next slide
+        const nextSlide = () => {
+            slideIndex = (slideIndex + 1) % slides.length; // Increment and loop back to the first slide
+            showSlide(slideIndex);
+        };
+    
+        // Function to go to the previous slide
+        const prevSlide = () => {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length; // Decrement and loop back to the last slide
+            showSlide(slideIndex);
+        };
+    
+        // Function to start the automatic slideshow
+        const startSlideshow = () => {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        };
+    
+        // Function to stop the automatic slideshow
+        const stopSlideshow = () => {
+            clearInterval(slideInterval);
+        };
+    
+        // Add event listeners to the buttons
+        document.querySelector('.prev').addEventListener('click', () => {
+            stopSlideshow(); // Stop the slideshow when manually navigating
+            prevSlide();
+            startSlideshow(); // Restart the slideshow
+        });
+    
+        document.querySelector('.next').addEventListener('click', () => {
+            stopSlideshow(); // Stop the slideshow when manually navigating
+            nextSlide();
+            startSlideshow(); // Restart the slideshow
+        });
+    
+        // Initialize the slider
+        showSlide(slideIndex); // Show the first slide
+        startSlideshow(); // Start the automatic slideshow
+
+    // Sidebar toggle function
+    const toggleSidebar = () => {
+        const sidebar = document.querySelector('.sidebar');
+        const backdrop = document.querySelector('.sidebar-backdrop');
+
+        // Toggle the active class for the sidebar and backdrop
+        sidebar.classList.toggle('active');
+        backdrop.classList.toggle('active');
+    };
     </script>
 </body>
 
