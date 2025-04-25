@@ -344,51 +344,44 @@
 
         /* Our Projects Section */
         .projects {
-            padding: 80px 20px;
-            text-align: center;
-        }
+    padding: 80px 20px;
+    text-align: center;
+}
 
-        .projects h2 {
-            font-size: 42px;
-            margin-bottom: 40px;
-            color: #1a4b8c;
-        }
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between grid items */
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+.projects h2 {
+    font-size: 42px; /* Same font size as Þjónusta okkar */
+    margin-bottom: 40px; /* Same spacing below the heading */
+    color: #1a4b8c; /* Same color */
+    text-align: center; /* Center alignment */
+}
 
-        .project {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.project {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .project:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
 
-        .project-image {
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #777;
-            overflow: hidden;
-        }
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.project-image img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    border-radius: 8px 8px 0 0; /* Rounded corners for the top */
+}
 
         .project-info {
             padding: 20px;
@@ -822,6 +815,7 @@
     <!-- Our Projects Section -->
     <section id="projects" class="projects">
         <h2>Verkefnin okkar</h2>
+        <div class="project-grid">
             <div class="project">
                 <div class="project-image">
                     <img src="mynd/1hof.jpeg" alt="Íbúðarhúsnæði verkefni">
@@ -852,7 +846,7 @@
                     <a href="#" class="project-btn">Sjá nánar</a>
                 </div>
             </div>
-    
+        </div>
     </section>
 
 
