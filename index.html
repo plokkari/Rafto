@@ -118,7 +118,7 @@
             color: #2e6cc3;
         }
         .slider-container {
-    margin-top: 70px; /* Matches the height of the navbar */
+    margin-top: 100px; /* Add space to prevent overlap with the navbar */
     margin-bottom: 20px; /* Reduced space below the slider */
     position: relative;
     width: 100%;
@@ -146,13 +146,13 @@
     z-index: 1;
 }
 
-.slide img {
-    width: 80%; /* Reduce image width for better spacing */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover;
+. .slide img {
+    width: 100%; /* Ensure the image fills the width of the container */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: contain; /* Ensure the entire image is visible without cropping */
     border-radius: 10px; /* Optional: Add rounded corners */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better focus */
-    border: 5px solid #1a4b8c; /* Add a frame with a blue border */
+    border: 5px solid #1a4b8c; /* Optional: Add a frame with a blue border */
 }
 
 .caption {
@@ -745,7 +745,7 @@
         <ul>
             <li><a href="#about">Um Raftó</a></li>
             <li><a href="#services">Þjónusta</a></li>
-            <li><a href="#projects">Verkefni</a></li>
+            <li><a href="projects.html">Verkefni</a></li>
             <li><a href="contact.html">Hafðu samband</a></li>
         </ul>
     </div>
@@ -822,7 +822,7 @@
                 </div>
                 <div class="project-info">
                     <h3>Hring ljós í Hofi</h3>
-                    <a href="#" class="project-btn">Sjá nánar</a>
+                    <a href="project-details/hof.html" class="project-btn">Sjá nánar</a>
                 </div>
             </div>
             <div class="project">

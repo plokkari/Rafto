@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verkefnin okkar - Raftó ehf</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #444;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Top Navigation Bar - Professional Blue */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #1a4b8c;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            height: 120px;
+            width: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .menu-btn {
+            position: absolute;
+            left: 20px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+        }
+
+        .menu-btn span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 3px;
+        }
+
+        /* Sidebar Menu */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            transition: left 0.3s ease-in-out;
+            z-index: 1001;
+            padding-top: 80px;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .sidebar-backdrop.active {
+            display: block;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            padding: 15px 25px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .sidebar li a {
+            color: #1a4b8c;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+        }
+
+        .sidebar li a:hover {
+            color: #2e6cc3;
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+
+        .project-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .project-item img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .project-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1a4b8c;
+        }
+
+        .project-info p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .project-info a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            background-color: #1a4b8c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-info a:hover {
+            background-color: #2e6cc3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="menu-btn" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="logo" onclick="window.location.href='index.html'">
+            <img src="mynd/logo.png" alt="Raftó ehf Logo">
+        </div>
+    </nav>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="index.html#about">Um Raftó</a></li>
+            <li><a href="index.html#services">Þjónusta</a></li>
+            <li><a href="projects.html">Verkefni</a></li>
+            <li><a href="contact.html">Hafðu samband</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-backdrop" onclick="toggleSidebar()"></div>
+
+    <!-- Projects Section -->
+    <div class="projects-container">
+        <div class="project-item">
+            <img src="mynd/1hof.jpeg" alt="Hring ljós í Hofi">
+            <div class="project-info">
+                <h3>Hring ljós í Hofi</h3>
+                <p>Við settum upp skrautlýsingu fyrir sal í Hofi.</p>
+                <a href="project-details/hof.html">Sjá nánar</a>
+            </div>
+        </div>
+        <div class="project-item">
+            <img src="mynd/2safn.jpeg" alt="Ledborði fyrir tröppur">
+            <div class="project-info">
+                <h3>Ledborði fyrir tröppur</h3>
+                <p>Litríkur ledborði sem við settum upp til að lýsa upp tröppurnar upp að Sigurhæðum.</p>
+                <a href="project-details/safn.html">Sjá nánar</a>
+            </div>
+        </div>
+        <div class="project-item">
+            <img src="mynd/2led.jpeg" alt="Útilýsing fyrir Víðilund">
+            <div class="project-info">
+                <h3>Útilýsing fyrir Víðilund</h3>
+                <p>Ledborði sem fer eftir húsinu og lýsir upp gönguleið.</p>
+                <a href="project-details/vidilund.html">Sjá nánar</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sidebar toggle function
+        const toggleSidebar = () => {
+            const sidebar = document.querySelector('.sidebar');
+            const backdrop = document.querySelector('.sidebar-backdrop');
+
+            // Toggle the active class for the sidebar and backdrop
+            sidebar.classList.toggle('active');
+            backdrop.classList.toggle('active');
+        };
+    </script>
+</body>
+</html>
