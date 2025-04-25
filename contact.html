@@ -219,14 +219,10 @@
     <!-- Contact Form -->
     <div class="contact-container">
         <h1>Hafðu Samband</h1>
-        <form action="http://localhost:3000/send-message" method="POST" id="contactForm">
+        <form action="https://formspree.io/f/xblojnez" method="POST" id="contactForm">
             <div class="form-group">
                 <label for="name">Nafn</label>
                 <input type="text" id="name" name="name" placeholder="Skrifaðu nafnið þitt" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Símanúmer</label>
-                <input type="tel" id="phone" name="phone" placeholder="Skrifaðu símanúmerið þitt" required>
             </div>
             <div class="form-group">
                 <label for="email">Netfang</label>
@@ -255,35 +251,6 @@
         // Prevent default action for "Hafðu samband" link
         document.getElementById('noAction').addEventListener('click', (event) => {
             event.preventDefault();
-        });
-
-        // Form submission logic
-        const form = document.getElementById('contactForm');
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const formData = {
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value,
-            };
-            try {
-                const response = await fetch('http://localhost:3000/send-message', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData),
-                });
-                if (response.ok) {
-                    alert('Message sent successfully!');
-                } else {
-                    alert('Failed to send message.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred while sending the message.');
-            }
         });
     </script>
 </body>
