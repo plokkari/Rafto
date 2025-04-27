@@ -314,42 +314,42 @@
         const toggleSidebar = () => {
             const sidebar = document.querySelector('.sidebar');
             const backdrop = document.querySelector('.sidebar-backdrop');
-
+    
             // Toggle the active class for the sidebar and backdrop
             sidebar.classList.toggle('active');
             backdrop.classList.toggle('active');
         };
-
+    
         // Slideshow functionality
         let currentSlide = 0;
         let slides = document.querySelectorAll('.slideshow-container img');
         let slideInterval;
-
+    
         const showSlide = (index) => {
             slides.forEach((slide, i) => {
                 slide.classList.toggle('active', i === index);
             });
         };
-
+    
         const changeSlide = (direction) => {
             currentSlide = (currentSlide + direction + slides.length) % slides.length;
             showSlide(currentSlide);
             resetTimer();
         };
-
+    
         const autoSlide = () => {
             currentSlide = (currentSlide + 1) % slides.length;
             showSlide(currentSlide);
         };
-
+    
         const resetTimer = () => {
             clearInterval(slideInterval);
             slideInterval = setInterval(autoSlide, 5000);
         };
-
+    
         // Initialize slideshow
         slideInterval = setInterval(autoSlide, 5000);
-
+    
         // Lightbox functionality
         let lightboxIndex = 0;
         const lightboxImages = [
@@ -360,24 +360,40 @@
             "../mynd/sig5.jpg",
             "../mynd/sig6.jpg"
         ];
-
+    
         const openLightbox = (index) => {
             lightboxIndex = index;
             const lightbox = document.getElementById("lightbox");
             const lightboxImage = document.getElementById("lightbox-image");
             lightboxImage.src = lightboxImages[lightboxIndex];
             lightbox.style.display = "flex";
+    
+            // Add event listener for keyboard navigation
+            document.addEventListener("keydown", handleKeydown);
         };
-
+    
         const changeLightboxSlide = (direction) => {
             lightboxIndex = (lightboxIndex + direction + lightboxImages.length) % lightboxImages.length;
             const lightboxImage = document.getElementById("lightbox-image");
             lightboxImage.src = lightboxImages[lightboxIndex];
         };
-
+    
         const closeLightbox = () => {
             const lightbox = document.getElementById("lightbox");
             lightbox.style.display = "none";
+    
+            // Remove event listener for keyboard navigation
+            document.removeEventListener("keydown", handleKeydown);
+        };
+    
+        const handleKeydown = (event) => {
+            if (event.key === "ArrowRight") {
+                changeLightboxSlide(1); // Navigate to the next image
+            } else if (event.key === "ArrowLeft") {
+                changeLightboxSlide(-1); // Navigate to the previous image
+            } else if (event.key === "Escape") {
+                closeLightbox(); // Close the lightbox
+            }
         };
     </script>
 </body>
