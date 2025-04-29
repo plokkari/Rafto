@@ -246,16 +246,30 @@
         const toggleSidebar = () => {
             const sidebar = document.querySelector('.sidebar');
             const backdrop = document.querySelector('.sidebar-backdrop');
-
+    
             // Toggle the active class for the sidebar and backdrop
             sidebar.classList.toggle('active');
             backdrop.classList.toggle('active');
         };
-
+    
         // Prevent default action for "Hafðu samband" link
         document.getElementById('noAction').addEventListener('click', (event) => {
             event.preventDefault();
         });
+    
+        // Reset the form when the page is loaded or shown
+        const resetContactForm = () => {
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.reset();
+            }
+        };
+    
+        // Reset the form on page load
+        window.onload = resetContactForm;
+    
+        // Reset the form when the page is shown (e.g., after navigating back)
+        window.addEventListener('pageshow', resetContactForm);
     </script>
 </body>
 </html>
