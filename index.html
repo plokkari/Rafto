@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raftó ehf. - Professional Electrical Services</title>
-    <style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZKEVLPFT1W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZKEVLPFT1W');
+</script>
+
+<link rel="canonical" href="https://rafto.is/">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="rafverktaki akureyri, rafvirki akureyri, raftó, rafto, löggiltur rafverktaki">
+<meta name="description" content="Raftó ehf. er löggiltur rafverktaki á Akureyri sem býður upp á faglega þjónustu í raflögnum, lýsingarhönnun og snjallheimislausnum.">
+<title>Raftó ehf. - Löggiltur Rafverktaki</title>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -724,7 +738,32 @@
         .contact-segment a:hover {
             text-decoration: underline;
         }
+
+.footer-images {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-image {
+    width: 100px; /* Adjust the size as needed */
+    height: auto;
+    margin: 0 10px; /* Add spacing between the images */
+}
     </style>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Raftó ehf.",
+          "url": "https://rafto.is/",
+          "logo": "https://rafto.is/mynd/logo.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+3548422646",
+            "contactType": "Customer Service"
+          }
+        }
+        </script>
 </head>
 
 <body>
@@ -768,14 +807,12 @@
             <button class="next" onclick="changeSlide(1)">&#10095;</button>
         </div>
 
+        <section id="about" class="company-info">
+            <h2>Um Raftó ehf.</h2>
+            <p>Raftó er löggiltur rafverktaki og er leiðandi rafverktakafyrirtæki með áratuga reynslu í faginu. Við sérhæfum okkur í heildarlausnum á sviði rafmagns fyrir heimili og fyrirtæki um land allt. Með reyndum meistara og faglærðum rafvirkjum getum við tekið að okkur verkefni af öllum stærðum og gerðum - allt frá litlum viðgerðum upp í stór iðnaðarverkefni. Við bjóðum nú einnig upp á þjónustu vélfræðings sem sinnir fjölbreyttum verkefnum fyrir iðnað og fyrirtæki.</p>
+        </section>
+    
     <!-- Company Information -->
-    <section id="about" class="company-info">
-        <h2>Um Raftó ehf.</h2>
-        <p>Raftó er löggiltur rafverktaki og er leiðandi rafverktakafyrirtæki með áratuga reynslu í faginu. Við sérhæfum okkur í heildarlausnum á sviði rafmagns fyrir heimili og fyrirtæki um allt land. Með reyndum meistara og faglærðum rafvirkjum getum við tekið að okkur verkefni af öllum stærðum og gerðum - allt frá litlum viðgerðum upp í stór iðnaðarverkefni.</p>
-    </section>
-    </div>
-
-    <!-- Services Section -->
     <section id="services" class="services">
         <h2>Þjónusta okkar</h2>
         <div class="services-grid">
@@ -810,6 +847,25 @@
                 <p>Uppsetning og tenging á hleðslustöðvum fyrir rafbíla við heimili og fyrirtæki. Ráðgjöf um hentuga lausn miðað við þínar þarfir.</p>
             </div>
         </div>
+    
+        <!-- New grid for Vélfræðingur services -->
+<div class="services-grid" style="margin-top: 40px;">
+    <div class="service-item">
+        <div class="service-icon">⚙️</div>
+        <h3>Viðhald og viðgerðir</h3>
+        <p>Fagleg þjónusta við viðhald og viðgerðir á vélbúnaði fyrir heimili, fyrirtæki og iðnað. Tryggjum áreiðanleika og langlífi véla.</p>
+    </div>
+    <div class="service-item">
+        <div class="service-icon">🔧</div>
+        <h3>Uppsetning vélbúnaðar</h3>
+        <p>Uppsetning og stilling á vélbúnaði fyrir framleiðslu, iðnað og önnur sérhæfð verkefni. Sérsniðnar lausnir fyrir þínar þarfir.</p>
+    </div>
+    <div class="service-item">
+        <div class="service-icon">📊</div>
+        <h3>Ástandsgreining</h3>
+        <p>Greining á ástandi véla og búnaðar til að koma í veg fyrir bilanir og tryggja hámarksafköst.</p>
+    </div>
+</div>
     </section>
 
     <!-- Our Projects Section -->
@@ -875,74 +931,134 @@
                 </ul>
             </div>
         </div>
+        <div class="footer-images">
+            <img src="mynd/loggiltur.jpg" alt="Image 1" class="footer-image">
+            <img src="mynd/sart.jpg" alt="Image 2" class="footer-image">
+        </div>
         <div class="copyright">
             <p>&copy; 2025 Raftó ehf. allur réttur áskilinn.</p>
         </div>
     </footer>
-
     <script>
-        let slideIndex = 0; // Start with the first slide
-        const slides = document.querySelectorAll('.slide'); // Select all slides
-        let slideInterval; // Variable to store the interval
-    
-        // Function to show the current slide
-        const showSlide = (index) => {
-            slides.forEach((slide, i) => {
-                slide.style.opacity = '0'; // Hide all slides
-                slide.classList.remove('active'); // Remove the active class
-            });
-            slides[index].style.opacity = '1'; // Show the current slide
-            slides[index].classList.add('active'); // Add the active class
-        };
-    
-        // Function to go to the next slide
-        const nextSlide = () => {
-            slideIndex = (slideIndex + 1) % slides.length; // Increment and loop back to the first slide
-            showSlide(slideIndex);
-        };
-    
-        // Function to go to the previous slide
-        const prevSlide = () => {
-            slideIndex = (slideIndex - 1 + slides.length) % slides.length; // Decrement and loop back to the last slide
-            showSlide(slideIndex);
-        };
-    
-        // Function to start the automatic slideshow
-        const startSlideshow = () => {
-            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-        };
-    
-        // Function to stop the automatic slideshow
-        const stopSlideshow = () => {
-            clearInterval(slideInterval);
-        };
-    
-        // Add event listeners to the buttons
-        document.querySelector('.prev').addEventListener('click', () => {
-            stopSlideshow(); // Stop the slideshow when manually navigating
-            prevSlide();
-            startSlideshow(); // Restart the slideshow
-        });
-    
-        document.querySelector('.next').addEventListener('click', () => {
-            stopSlideshow(); // Stop the slideshow when manually navigating
-            nextSlide();
-            startSlideshow(); // Restart the slideshow
-        });
-    
-        // Initialize the slider
-        showSlide(slideIndex); // Show the first slide
-        startSlideshow(); // Start the automatic slideshow
+   // Sidebar toggle function
+const toggleSidebar = () => {
+    const sidebar = document.querySelector('.sidebar');
+    const backdrop = document.querySelector('.sidebar-backdrop');
 
-    // Sidebar toggle function
-    const toggleSidebar = () => {
+    // Toggle the active class for the sidebar and backdrop
+    sidebar.classList.toggle('active');
+    backdrop.classList.toggle('active');
+};
+
+// Close the sidebar when a link is clicked
+const sidebarLinks = document.querySelectorAll('.sidebar a');
+sidebarLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href'); // Get the href attribute
+
+        // Check if the link contains an internal anchor (e.g., #about)
+        if (targetId.startsWith('#')) {
+            e.preventDefault(); // Prevent default anchor behavior
+            const targetElement = document.querySelector(targetId); // Find the target element
+            if (targetElement) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight; // Get the navbar height
+                const offsetTop = targetElement.offsetTop - navbarHeight; // Calculate offset position
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth' // Smooth scrolling
+                });
+            }
+        } else {
+            // For external links, allow default behavior
+            return;
+        }
+
+        // Close the sidebar
         const sidebar = document.querySelector('.sidebar');
         const backdrop = document.querySelector('.sidebar-backdrop');
+        sidebar.classList.remove('active');
+        backdrop.classList.remove('active');
+    });
+});
 
-        // Toggle the active class for the sidebar and backdrop
-        sidebar.classList.toggle('active');
-        backdrop.classList.toggle('active');
-    };
+// Scroll to the top when the logo is clicked
+const logo = document.querySelector('.logo');
+logo.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scrolling to the top
+    });
+});
+
+// Handle scrolling to anchors after page load
+window.addEventListener('load', () => {
+    const hash = window.location.hash; // Get the hash from the URL
+    if (hash) {
+        const targetElement = document.querySelector(hash); // Find the target element
+        if (targetElement) {
+            const navbarHeight = document.querySelector('.navbar').offsetHeight; // Get the navbar height
+            const offsetTop = targetElement.offsetTop - navbarHeight; // Calculate offset position
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth' // Smooth scrolling
+            });
+        }
+    }
+});
+
+// Slider functionality
+let slideIndex = 0; // Start with the first slide
+const slides = document.querySelectorAll('.slide'); // Select all slides
+let slideInterval; // Variable to store the interval
+
+// Function to show the current slide
+const showSlide = (index) => {
+    slides.forEach((slide, i) => {
+        slide.style.opacity = '0'; // Hide all slides
+        slide.classList.remove('active'); // Remove the active class
+    });
+    slides[index].style.opacity = '1'; // Show the current slide
+    slides[index].classList.add('active'); // Add the active class
+};
+
+// Function to go to the next slide
+const nextSlide = () => {
+    slideIndex = (slideIndex + 1) % slides.length; // Increment and loop back to the first slide
+    showSlide(slideIndex);
+};
+
+// Function to go to the previous slide
+const prevSlide = () => {
+    slideIndex = (slideIndex - 1 + slides.length) % slides.length; // Decrement and loop back to the last slide
+    showSlide(slideIndex);
+};
+
+// Function to start the automatic slideshow
+const startSlideshow = () => {
+    slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+};
+
+// Function to stop the automatic slideshow
+const stopSlideshow = () => {
+    clearInterval(slideInterval);
+};
+
+// Add event listeners to the buttons
+document.querySelector('.prev').addEventListener('click', () => {
+    stopSlideshow(); // Stop the slideshow when manually navigating
+    prevSlide();
+    startSlideshow(); // Restart the slideshow
+});
+
+document.querySelector('.next').addEventListener('click', () => {
+    stopSlideshow(); // Stop the slideshow when manually navigating
+    nextSlide();
+    startSlideshow(); // Restart the slideshow
+});
+
+// Initialize the slider
+showSlide(slideIndex); // Show the first slide
+startSlideshow(); // Start the automatic slideshow
     </script>
 </body>
 
